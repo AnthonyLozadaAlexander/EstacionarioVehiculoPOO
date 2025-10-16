@@ -3,9 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
-import Vehiculo.Auto;
-import Vehiculo.Camion;
-import Vehiculo.Vehiculo;
+import javax.print.attribute.standard.JobPriority;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,14 +25,29 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
     
     public void alternarPaneles(){
         
-        if(cboVehiculo.getSelectedIndex() == 0){
+        if(cboTipoVehiculo.getSelectedIndex() == 0){
             panelAuto.setVisible(false);
             panelCamion.setVisible(false);
         }else{
-        boolean seleccion = cboVehiculo.getSelectedItem().equals("Auto");
+        boolean seleccion = cboTipoVehiculo.getSelectedItem().equals("Auto");
         panelAuto.setVisible(seleccion);
         panelCamion.setVisible(!seleccion);
         }
+    }
+    
+    public void limpiarCampos(){
+        txtMarca.setText("");
+        txtAnio.setText("");
+        txtCombustible.setText("");
+        txtPrecioBase.setText("");
+        txtModelo.setText("");
+        txtCostoMantenimiento.setText("");
+        txtDescuento.setText("");
+        txtToneladas.setText("");
+        txtPuertas.setText("");
+        txtToneladas.setText("");
+        txtCostoMantenimiento.setText("");
+        txtEjes.setText("");
     }
 
     /**
@@ -48,7 +62,7 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
         Fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        cboVehiculo = new javax.swing.JComboBox<>();
+        cboTipoVehiculo = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -97,14 +111,14 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
 
         Fondo.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 110));
 
-        cboVehiculo.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 1, 18)); // NOI18N
-        cboVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Tipo Vehiculo", "Auto", "Camion" }));
-        cboVehiculo.addActionListener(new java.awt.event.ActionListener() {
+        cboTipoVehiculo.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 1, 18)); // NOI18N
+        cboTipoVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Tipo Vehiculo", "Auto", "Camion" }));
+        cboTipoVehiculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboVehiculoActionPerformed(evt);
+                cboTipoVehiculoActionPerformed(evt);
             }
         });
-        Fondo.add(cboVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 310, -1));
+        Fondo.add(cboTipoVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 310, -1));
 
         jLabel2.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
         jLabel2.setText("PrecioBase");
@@ -140,10 +154,20 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
 
         btnLimpiar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
         Fondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 110, -1));
 
         btnIngresar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
         Fondo.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, -1, -1));
 
         panelCamion.setBackground(new java.awt.Color(255, 255, 255));
@@ -243,10 +267,96 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtToneladasActionPerformed
 
-    private void cboVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVehiculoActionPerformed
+    private void cboTipoVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoVehiculoActionPerformed
         alternarPaneles();
 
-    }//GEN-LAST:event_cboVehiculoActionPerformed
+    }//GEN-LAST:event_cboTipoVehiculoActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        if(txtMarca.getText().trim().isEmpty() || txtModelo.getText().trim().isEmpty() || txtAnio.getText().trim().isEmpty() || txtPrecioBase.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Error: Los Campos No Pueden Estar Vacios", "Advertencia", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String marca = txtMarca.getText();
+        String modelo = txtModelo.getText();
+        int anio = Integer.parseInt(txtAnio.getText());
+        double precioBase = Double.parseDouble(txtPrecioBase.getText());
+        
+        if(precioBase < 0){
+            JOptionPane.showMessageDialog(this, "Error: No Puede Ingresar Precios Menores a 0", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        String tipoVehiculo = (String) cboTipoVehiculo.getSelectedItem();
+        if(("Auto").equals(tipoVehiculo)){
+            
+            int puertas = Integer.parseInt(txtPuertas.getText());
+            boolean aireAcondicionado = chk_aireAcondicionado.isSelected();
+            
+            if(chk_aireAcondicionado.isSelected()){
+                JOptionPane.showMessageDialog(this, "El Auto Tiene Aire Acondicionado Por Lo Cual Se Aumentara $800 al Precio" + "Informacion"+ JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            double descuento = Double.parseDouble(txtDescuento.getText());
+            String tipoCombustible = txtCombustible.getText();
+            
+            Auto auto = new Auto();
+            
+            auto.setAnio(anio);
+            auto.setMarca(marca);
+            auto.setModelo(modelo);
+            auto.setPrecioBase(precioBase);
+            
+            auto.setPuertas(puertas);
+            auto.setAireAcondicionado(aireAcondicionado);
+            auto.setDescuento(descuento);
+            auto.setTipoCombustible(tipoCombustible);
+            
+            
+            auto.calcularTotal();
+            
+            txtResultadoAuto.append(auto.mostrarInfo());
+        }
+        
+        if(("Camion").equals(tipoVehiculo)){
+            
+            int capacidadToneladas = Integer.parseInt(txtToneladas.getText());
+            int ejes = Integer.parseInt(txtEjes.getText());
+            double costoMantenimiento = Double.parseDouble(txtCostoMantenimiento.getText());
+            
+            boolean remolque = chk_remolque.isSelected();
+            
+            if(chk_remolque.isSelected()){
+                JOptionPane.showMessageDialog(this, "El Camion Tiene Remolque Por Lo Cual Se Aumentara $1200 al Total" + "Informacion"+ JOptionPane.INFORMATION_MESSAGE);
+            }
+            
+            Camion camion = new Camion();
+            
+            camion.setAnio(anio);
+            camion.setMarca(marca);
+            camion.setModelo(modelo);
+            camion.setPrecioBase(precioBase);
+            
+            camion.setCapacidadToneladas(capacidadToneladas);
+            camion.setEjes(ejes);
+            camion.setCostoMantenimiento(costoMantenimiento);
+            camion.setRemolque(remolque);
+            
+            camion.calcularTotal();
+            
+            txtResultadoCamion.append(camion.mostrarInfo());
+            
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        int opcion = JOptionPane.showConfirmDialog(this, "Recuerde que todo el Sistema se Limpiara", "Limpiar", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+        if(opcion == JOptionPane.YES_OPTION){
+            limpiarCampos();
+        }
+        
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,7 +398,7 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
     private javax.swing.JPanel Titulo;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JComboBox<String> cboVehiculo;
+    private javax.swing.JComboBox<String> cboTipoVehiculo;
     private javax.swing.JCheckBox chk_aireAcondicionado;
     private javax.swing.JCheckBox chk_remolque;
     private javax.swing.JLabel jLabel1;
