@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
+import Vehiculo.Auto;
+import Vehiculo.Camion;
+import Vehiculo.Vehiculo;
 
 /**
  *
@@ -15,6 +18,22 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
      */
     public FormVehiculosPoli() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        panelAuto.setVisible(false);
+        panelCamion.setVisible(false);
+    }
+    
+    public void alternarPaneles(){
+        
+        if(cboVehiculo.getSelectedIndex() == 0){
+            panelAuto.setVisible(false);
+            panelCamion.setVisible(false);
+        }else{
+        boolean seleccion = cboVehiculo.getSelectedItem().equals("Auto");
+        panelAuto.setVisible(seleccion);
+        panelCamion.setVisible(!seleccion);
+        }
     }
 
     /**
@@ -26,21 +45,208 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        Fondo = new javax.swing.JPanel();
+        Titulo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        cboVehiculo = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtPrecioBase = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        txtModelo = new javax.swing.JTextField();
+        txtAnio = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
+        btnIngresar = new javax.swing.JButton();
+        panelCamion = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        txtToneladas = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtEjes = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtCostoMantenimiento = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtResultadoCamion = new javax.swing.JTextArea();
+        chk_remolque = new javax.swing.JCheckBox();
+        panelAuto = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtPuertas = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtCombustible = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtDescuento = new javax.swing.JTextField();
+        chk_aireAcondicionado = new javax.swing.JCheckBox();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtResultadoAuto = new javax.swing.JTextArea();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Fondo.setBackground(new java.awt.Color(255, 255, 255));
+        Fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Titulo.setBackground(new java.awt.Color(255, 226, 197));
+        Titulo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Titulo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 36)); // NOI18N
+        jLabel1.setText("Estacionamiento Autos");
+        Titulo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 510, -1));
+
+        Fondo.add(Titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 110));
+
+        cboVehiculo.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 1, 18)); // NOI18N
+        cboVehiculo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Tipo Vehiculo", "Auto", "Camion" }));
+        cboVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboVehiculoActionPerformed(evt);
+            }
+        });
+        Fondo.add(cboVehiculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 310, -1));
+
+        jLabel2.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel2.setText("PrecioBase");
+        Fondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel3.setText("Marca");
+        Fondo.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel4.setText("Modelo");
+        Fondo.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel5.setText("Año");
+        Fondo.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+        Fondo.add(txtPrecioBase, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 130, 30));
+
+        txtMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMarcaActionPerformed(evt);
+            }
+        });
+        Fondo.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 100, 30));
+
+        txtModelo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeloActionPerformed(evt);
+            }
+        });
+        Fondo.add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 100, 30));
+        Fondo.add(txtAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 130, 30));
+
+        btnLimpiar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        Fondo.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 410, 110, -1));
+
+        btnIngresar.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        btnIngresar.setText("Ingresar");
+        Fondo.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, -1, -1));
+
+        panelCamion.setBackground(new java.awt.Color(255, 255, 255));
+        panelCamion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelCamion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel9.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel9.setText("Capacidad Toneladas");
+        panelCamion.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        txtToneladas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtToneladasActionPerformed(evt);
+            }
+        });
+        panelCamion.add(txtToneladas, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 140, -1));
+
+        jLabel10.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel10.setText("Ejes");
+        panelCamion.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
+        panelCamion.add(txtEjes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 140, -1));
+
+        jLabel11.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel11.setText("Costo Mantenimiento");
+        panelCamion.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+        panelCamion.add(txtCostoMantenimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 140, -1));
+
+        txtResultadoCamion.setColumns(20);
+        txtResultadoCamion.setLineWrap(true);
+        txtResultadoCamion.setRows(5);
+        jScrollPane2.setViewportView(txtResultadoCamion);
+
+        panelCamion.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 350, 520));
+
+        chk_remolque.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        chk_remolque.setText("Remolque");
+        panelCamion.add(chk_remolque, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, -1, -1));
+
+        Fondo.add(panelCamion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 670, 600));
+
+        panelAuto.setBackground(new java.awt.Color(255, 255, 255));
+        panelAuto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelAuto.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel6.setText("Puertas:");
+        panelAuto.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+
+        txtPuertas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPuertasActionPerformed(evt);
+            }
+        });
+        panelAuto.add(txtPuertas, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 140, -1));
+
+        jLabel7.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel7.setText("Tipo Combustible:");
+        panelAuto.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        panelAuto.add(txtCombustible, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 140, -1));
+
+        jLabel8.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        jLabel8.setText("Descuento:");
+        panelAuto.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, -1, -1));
+        panelAuto.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 140, -1));
+
+        chk_aireAcondicionado.setFont(new java.awt.Font("CaskaydiaMono NF SemiBold", 0, 18)); // NOI18N
+        chk_aireAcondicionado.setText("Aire Acondicionado");
+        panelAuto.add(chk_aireAcondicionado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+
+        txtResultadoAuto.setColumns(20);
+        txtResultadoAuto.setLineWrap(true);
+        txtResultadoAuto.setRows(5);
+        jScrollPane3.setViewportView(txtResultadoAuto);
+
+        panelAuto.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 350, 520));
+
+        Fondo.add(panelAuto, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 670, 600));
+
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1060, 700));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeloActionPerformed
+
+    private void txtMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMarcaActionPerformed
+
+    private void txtPuertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPuertasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPuertasActionPerformed
+
+    private void txtToneladasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToneladasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtToneladasActionPerformed
+
+    private void cboVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboVehiculoActionPerformed
+        alternarPaneles();
+
+    }//GEN-LAST:event_cboVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +284,39 @@ public class FormVehiculosPoli extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
+    private javax.swing.JPanel Titulo;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JComboBox<String> cboVehiculo;
+    private javax.swing.JCheckBox chk_aireAcondicionado;
+    private javax.swing.JCheckBox chk_remolque;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JPanel panelAuto;
+    private javax.swing.JPanel panelCamion;
+    private javax.swing.JTextField txtAnio;
+    private javax.swing.JTextField txtCombustible;
+    private javax.swing.JTextField txtCostoMantenimiento;
+    private javax.swing.JTextField txtDescuento;
+    private javax.swing.JTextField txtEjes;
+    private javax.swing.JTextField txtMarca;
+    private javax.swing.JTextField txtModelo;
+    private javax.swing.JTextField txtPrecioBase;
+    private javax.swing.JTextField txtPuertas;
+    private javax.swing.JTextArea txtResultadoAuto;
+    private javax.swing.JTextArea txtResultadoCamion;
+    private javax.swing.JTextField txtToneladas;
     // End of variables declaration//GEN-END:variables
 }
