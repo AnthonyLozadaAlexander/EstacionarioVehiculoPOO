@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Vehiculo;
+package GUI;
 
 /**
  *
@@ -32,8 +32,6 @@ public class Camion extends Vehiculo {
         this.costoMantenimiento = costoMantenimiento;
         this.remolque = remolque;
     }
-
-    
     
     public int getCapacidadToneladas() {
         return capacidadToneladas;
@@ -66,6 +64,30 @@ public class Camion extends Vehiculo {
     public void setRemolque(boolean remolque) {
         this.remolque = remolque;
     }
+    
+    @Override
+    public double calcularTotal(){
+        double total = getPrecioBase() + costoMantenimiento;
+        if(isRemolque() && getCapacidadToneladas() > 10){
+            return total = total + 1200 + 500;
+        }
+        if(isRemolque()){
+            return total = total + 1200;
+        }
+        
+        if(getCapacidadToneladas() > 10){
+            return total = total + 500;
+        }
+        
+        return total;
+    }
+    
+    @Override
+    public String mostrarInfo(){
+        String info = super.mostrarInfo();
+        return info + "Capacidad Toneladas: " + getCapacidadToneladas() + "\nEjes: " + ejes + "\nCosto Mantenimiento: " + getCostoMantenimiento() + "\nRemolque: " + (isRemolque() ? "Si" : "No") + "\n" + "\nTotal: " + calcularTotal();
+    }
+    
     
     
     
