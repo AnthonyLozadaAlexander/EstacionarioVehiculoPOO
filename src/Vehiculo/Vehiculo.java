@@ -14,5 +14,23 @@ public class Vehiculo {
     private int anio;
     private double precioBase;
     
+    public Vehiculo(){
+        
+    }
+    
+    public Vehiculo(String marca, String modelo, int anio, double precioBase){
+        this.marca = marca;
+        this.modelo = modelo;
+        this.anio = anio;
+        this.precioBase = precioBase;
+    }
+    
+    public double calcularTotal(){
+        return precioBase;
+    }
+    
+    public String mostrarInfo(){
+        return "Marca: " + marca + "\nModelo: " + modelo + "\nAño: " + anio + "\nPrecioBase: " + precioBase + "\n";
+    }
     
 }
